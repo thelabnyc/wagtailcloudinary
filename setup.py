@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='wagtailcloudinary',
-    version='0.1',
+    version='0.2',
     packages=find_packages(),
     install_requires=['cloudinary', 'wagtail'],
     include_package_data=True,
@@ -22,14 +22,13 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 2.1',
+        'Framework :: Wagtail',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD Licence',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules'
