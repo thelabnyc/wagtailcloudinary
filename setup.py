@@ -25,7 +25,6 @@ setup(
         'Framework :: Django :: 2.1',
         'Framework :: Wagtail',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD Licence',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
