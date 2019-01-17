@@ -4,21 +4,18 @@
 This package adds Cloudinary support to Wagtail CMS
 
 ## Installation
-To install the package you can use the master branch like this:
-```
-pip install -e git+git://github.com/dteskera/wagtailcloudinary.git#egg=wagtailcloudinary
-```
-Or you can used a stable version:
-```
-pip install -e git+git://github.com/dteskera/wagtailcloudinary.git@v0.3#egg=wagtailcloudinary
-```
+
+Coming soon to pypi
+
+Wagtail 2.4 and Django 2.1 are supported.
 
 ## Configuration
-Add app wagtailcloudinary in your INSTALLED_APPS list
+Add app wagtailcloudinary in your INSTALLED_APPS list. Also add cloudinary if not already done.
 
 ```
 INSTALLED_APPS = [
     ...
+    'cloudinary',
     'wagtailcloudinary',
     ...
 ]
@@ -34,6 +31,18 @@ cloudinary.config(
     api_key=<YOUR_CLOUDINARY_API_KEY>,
     api_secret=<YOUR_CLOUDINARY_API_SECRET>,
 )
+```
+
+Next edit your urls.py like this:
+
+```
+from wagtailcloudinary.sites import site
+
+urlpatterns = [
+    ...
+    url(r'^wagtailcloudinary', include(site.urls, namespace="wagtailcloudinary")),
+    ...
+]
 ```
 
 ## Usage

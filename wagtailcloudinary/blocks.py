@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.functional import cached_property
-from wagtail.wagtailcore.blocks import FieldBlock
+from wagtail.core.blocks import FieldBlock
 
 
 class CloudinaryImageBlock(FieldBlock):

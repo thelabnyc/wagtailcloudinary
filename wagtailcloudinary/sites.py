@@ -7,8 +7,8 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.utils.html import format_html
 from django.views.decorators.cache import never_cache
-from wagtail.wagtailcore import hooks
-from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
+from wagtail.core import hooks
+from wagtail.admin.modal_workflow import render_modal_workflow
 
 
 @hooks.register('insert_global_admin_css')
@@ -21,9 +21,9 @@ def global_admin_js():
     html = []
     scripts = [
         static('wagtailcloudinary/js/csrf-token.js'),
-        static('js/jquery.ui.widget.js'),
-        static('js/jquery.iframe-transport.js'),
-        static('js/jquery.fileupload.js'),
+        static('wagtailadmin/js/vendor/jquery.ui.widget.js'),
+        static('wagtailadmin/js/vendor/jquery.iframe-transport.js'),
+        static('wagtailadmin/js/vendor/jquery.fileupload.js'),
     ]
     for item in scripts:
         html.append('<script src="{}"></script>'.format(item))
@@ -54,7 +54,7 @@ class CloudinarySite():
 
     @property
     def urls(self):
-        return self.get_urls(), 'wagtailcloudinary', self.name
+        return self.get_urls(), 'wagtailcloudinary'
 
     def browse(self, request):
         params = {'max_results': 18, 'tags': True}
@@ -74,7 +74,12 @@ class CloudinarySite():
             tags = cloudinary.api.tags()
             context.update(tags)
             template_name = 'wagtailcloudinary/browse.html'
-            return render_modal_workflow(request, template_name, 'wagtailcloudinary/browse.js', context)
+            js_data = {
+                'step': 'chooser',
+                'error_label': "Server Error",
+                'error_message': "Error",
+            }
+            return render_modal_workflow(request, template_name, None, context, json_data=js_data)  # js_template='wagtailcloudinary/browse.js', json_data=context)
 
     def upload(self, request):
         response = {'images': []}
@@ -95,8 +100,9 @@ class CloudinarySite():
         return render_modal_workflow(
             request,
             None,
-            'wagtailcloudinary/image_chosen.js',
-            {
+            None, # 'wagtailcloudinary/image_chosen.js',
+            json_data={
+                'step': 'select',
                 'image_json': {
                     'value': path,
                     'url': '{}{}'.format(self.base_url, transformed)
