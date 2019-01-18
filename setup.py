@@ -9,14 +9,14 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='wagtailcloudinary',
-    version='0.2',
+    version='0.5',
     packages=find_packages(),
     install_requires=['cloudinary', 'wagtail'],
     include_package_data=True,
     license='BSD Licence',
     description='Cloudinary support for Wagtail CMS',
     long_description=README,
-    url='https://github.com/dteskera/wagtailcloudinary',
+    url='https://gitlab.com/thelabnyc/wagtailcloudinary',
     author='Davor Teskera',
     author_email='dteskera@gmail.com',
     classifiers=[
