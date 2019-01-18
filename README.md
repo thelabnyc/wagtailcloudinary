@@ -4,6 +4,8 @@
 
 This package adds Cloudinary support to Wagtail CMS
 
+![cloudinary images in wagtail admin](./wagtailcloudinary.png)
+
 ## Installation
 
 `pip install wagtailcloudinary`
