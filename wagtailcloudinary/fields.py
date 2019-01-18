@@ -45,7 +45,7 @@ class CloudinaryWidget(TextInput):
             'wagtailcloudinary/js/cloudinary-field.js',
         )
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, *args, **kwargs):
         w, h = getattr(settings, 'WAGTAILCLOUDINARY_ADMIN_IMAGE_SIZE', (165, 165))
         if isinstance(value, str):
             value = str_to_cloudinary_resource(value)
