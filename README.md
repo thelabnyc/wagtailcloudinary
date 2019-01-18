@@ -1,6 +1,7 @@
 # Use cloudinary within wagtail
 
 ## About
+
 This package adds Cloudinary support to Wagtail CMS
 
 ## Installation
@@ -36,7 +37,7 @@ cloudinary.config(
 Next edit your urls.py like this:
 
 ```
-from wagtailcloudinary.sites import site
+from wagtailcloudinary import site
 
 urlpatterns = [
     ...
@@ -61,3 +62,7 @@ class SomePage(Page):
         FieldPanel('image', widget=CloudinaryWidget),
     ]
 ```
+
+Or use in a streamfield 
+
+`from wagtailcloudinary.blocks import CloudinaryImageBlock`
