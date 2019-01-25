@@ -1,8 +1,6 @@
 from django.core.management import call_command
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 
-from model_mommy import mommy
-from wagtailcloudinary.fields import CloudinaryResource
 
 class CloudinaryWagtailAPITestCase(TestCase):
     """

@@ -1,13 +1,12 @@
-from django.forms.models import model_to_dict
-
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget, CloudinaryResource
+from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
 from wagtailcloudinary.blocks import CloudinaryImageBlock, CloudinarySnippetChooserBlock
 from wagtail.api import APIField
 
 from .snippets import ImageSnippet
+
 
 class FooPage(Page):
     image = CloudinaryField()
