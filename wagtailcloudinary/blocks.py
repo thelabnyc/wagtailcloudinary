@@ -31,16 +31,16 @@ class CloudinaryImageBlock(FieldBlock):
     class Meta:
         icon = "image"
 
-    def get_api_representation(self,value,context=None):
+    def get_api_representation(self, value, context=None):
         new_value = str_to_cloudinary_resource(value).public_id
-        return super().get_api_representation(new_value,context=None)
+        return super().get_api_representation(new_value, context)
 
 
 class CloudinarySnippetChooserBlock(SnippetChooserBlock):
     """
     Use this snippet chooser block when you have a snippet that contains a 
     CloudinaryField AND you must display the details of the snippet in the 
-    Wagtail API. 
+    Wagtail API (http://docs.wagtail.io/en/v2.4/advanced_topics/api/). 
     """
     def get_api_representation(self,value,context=None):
         snippet_dict = model_to_dict(value)

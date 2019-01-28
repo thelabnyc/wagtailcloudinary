@@ -68,17 +68,3 @@ class SomePage(Page):
 Or use in a streamfield 
 
 `from wagtailcloudinary.blocks import CloudinaryImageBlock`
-
-Or use in snippets
-
-```
-@register_snippet
-class ImageSnippet(models.Model):
-    image = CloudinaryField()
-    
-    panels = [
-        FieldPanel('image', widget=CloudinaryWidget),
-    ]
-```
-IMPORTANT: When a CloudinaryField is used in a snippet, you must use the CloudinarySnippetChooserBlock if
-you want to display serialized data in the Wagtail API.
