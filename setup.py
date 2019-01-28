@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='wagtailcloudinary',
-    version='0.5.1',
+    version='0.6.0',
     packages=find_packages(include=['wagtailcloudinary'], exclude=['sandbox']),
     install_requires=['cloudinary', 'wagtail'],
     include_package_data=True,
