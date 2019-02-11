@@ -21,7 +21,6 @@ def global_admin_js():
     html = []
     scripts = [
         static('wagtailcloudinary/js/csrf-token.js'),
-        static('wagtailadmin/js/vendor/jquery.ui.widget.js'),
         static('wagtailadmin/js/vendor/jquery.iframe-transport.js'),
         static('wagtailadmin/js/vendor/jquery.fileupload.js'),
     ]
