@@ -56,7 +56,7 @@ class CloudinarySite():
         return self.get_urls(), 'wagtailcloudinary'
 
     def browse(self, request):
-        params = {'max_results': 18, 'tags': True}
+        params = {'max_results': 40, 'tags': True}
         if 'next' in request.GET:
             params['next_cursor'] = request.GET['next']
         tag = request.GET.get('tag', None)
@@ -70,8 +70,9 @@ class CloudinarySite():
             html = render_to_string(template_name, context)
             return JsonResponse({'html': html, 'next': context.get('next_cursor', None), 'tag': tag})
         else:
-            tags = cloudinary.api.tags()
-            context.update(tags)
+            # We don't support load more on tags.
+            tags = cloudinary.api.tags(max_results=60)
+            context['tags'] = tags.get('tags', None)
             template_name = 'wagtailcloudinary/browse.html'
             js_data = {
                 'step': 'chooser',
