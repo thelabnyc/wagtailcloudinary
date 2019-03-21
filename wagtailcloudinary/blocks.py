@@ -24,16 +24,14 @@ class CloudinaryImageBlock(FieldBlock):
         field_kwargs = {'widget': CloudinaryWidget()}
         field_kwargs.update(self.field_options)
         return forms.CharField(**field_kwargs)
-    #
-    # def get_searchable_content(self, value):
-    #     return [force_text(value)]
 
     class Meta:
         icon = "image"
 
     def get_api_representation(self, value, context=None):
-        new_value = str_to_cloudinary_resource(value).public_id
-        return super().get_api_representation(new_value, context)
+        if value not in [None, '']:
+            value = str_to_cloudinary_resource(value).public_id
+        return super().get_api_representation(value, context)
 
 
 class CloudinarySnippetChooserBlock(SnippetChooserBlock):

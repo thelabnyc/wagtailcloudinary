@@ -24,10 +24,12 @@ class CloudinaryResource(cloudinary.CloudinaryResource):
             version=version, public_id=self.public_id)
 
 
-def str_to_cloudinary_resource(value, resource_type='image', type='upload'):
+def str_to_cloudinary_resource(value, resource_type='image', _type='upload'):
+    if value is '':
+        return None
     m = re.match(CLOUDINARY_FIELD_DB_RE, value)
     resource_type = m.group('resource_type') or resource_type
-    upload_type = m.group('type') or type
+    upload_type = m.group('type') or _type
     return CloudinaryResource(
         type=upload_type,
         resource_type=resource_type,

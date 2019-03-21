@@ -9,9 +9,9 @@ from .snippets import ImageSnippet
 
 
 class FooPage(Page):
-    image = CloudinaryField()
+    image = CloudinaryField(blank=True)
     body = StreamField([
-        ('image', CloudinaryImageBlock()),
+        ('image', CloudinaryImageBlock(required=False)),
         ('snippet_image', CloudinarySnippetChooserBlock(ImageSnippet)),
     ], blank=True)
 
