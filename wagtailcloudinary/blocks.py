@@ -29,7 +29,10 @@ class CloudinaryImageBlock(FieldBlock):
         icon = "image"
 
     def get_api_representation(self, value, context=None):
-        if value not in [None, '']:
+        # Treat "" as None
+        if value is '':
+            value = None
+        if value is not None:
             value = str_to_cloudinary_resource(value).public_id
         return super().get_api_representation(value, context)
 

@@ -81,6 +81,8 @@ class CloudinaryField(CharField):
         return str_to_cloudinary_resource(value, self.resource_type, self.type)
 
     def from_db_value(self, value, expression, connection, context):
+        if value is "":
+            return None
         return self.to_python(value)
 
     def get_prep_value(self, value):
