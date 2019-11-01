@@ -1,8 +1,8 @@
-Django==2.1.5
-wagtail==2.4
-cloudinary==1.15.0
+Django==2.2.6
+wagtail==2.6.3
+cloudinary==1.18.2
 psycopg2-binary==2.7.6.1
 django-taggit==0.23.0
-djangorestframework==3.9.1
+djangorestframework==3.10.3
 
 ipdb
