@@ -1,5 +1,7 @@
 # Use cloudinary within wagtail
 
+This project is still maintained, but I prefer this approach instead now https://gitlab.com/thelabnyc/wagtail-cloudinary-image
+
 ## About
 
 This package adds Cloudinary support to Wagtail CMS
