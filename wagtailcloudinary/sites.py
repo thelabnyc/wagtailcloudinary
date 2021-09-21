@@ -2,7 +2,7 @@ import cloudinary
 import cloudinary.api
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.utils.html import format_html
