@@ -4,5 +4,12 @@ test:
     - name: postgres
       alias: db
   script:
+    - echo "checking to see if this is exactly how this works..."
     - pip install -r requirements.txt
     - ./manage.py test
+
+
+variables:
+  POSTGRES_DB: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
