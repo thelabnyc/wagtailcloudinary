@@ -4,5 +4,6 @@ test:
     - name: postgres
       alias: db
   script:
+    - echo "checking to see if this is exactly how this works..."
     - pip install -r requirements.txt
     - ./manage.py test
