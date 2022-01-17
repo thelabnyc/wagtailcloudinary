@@ -1,5 +1,6 @@
 from django import template
 from wagtailcloudinary.fields import CloudinaryResource
+import cloudinary
 
 register = template.Library()
 
@@ -71,3 +72,9 @@ def add_get(parser, token):
         s = pair.split("=", 1)
         values[s[0]] = parser.compile_filter(s[1])
     return AddGetParameter(values)
+
+
+@register.simple_tag
+def cloudinary_base_url():
+    config = cloudinary.config()
+    return "https://res.cloudinary.com/{name}/".format(name=config.cloud_name)
