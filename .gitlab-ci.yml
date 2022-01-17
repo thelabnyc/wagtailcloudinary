@@ -1,5 +1,26 @@
+stages:
+  - test
+
+variables:
+  POSTGRES_DB: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+
+precommit:
+  stage: test
+  image: registry.gitlab.com/thelabnyc/dind:20.04
+  variables:
+    PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+  script:
+    - pip3 install pre-commit
+    - pre-commit run --all-files
+  cache:
+    paths:
+      - ${PRE_COMMIT_HOME}
+
 test:
-  image: python:3.7
+  stage: test
+  image: python:3.9
   services:
     - name: postgres
       alias: db
@@ -7,9 +28,3 @@ test:
     - echo "checking to see if this is exactly how this works..."
     - pip install -r requirements.txt
     - ./manage.py test
-
-
-variables:
-  POSTGRES_DB: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres

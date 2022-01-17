@@ -6,61 +6,58 @@ from django.db.models import CharField
 from django.forms.widgets import TextInput
 from django.template.loader import render_to_string
 
-CLOUDINARY_FIELD_DB_RE = r'(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$'
+CLOUDINARY_FIELD_DB_RE = r"(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$"
 
 
 class CloudinaryResource(cloudinary.CloudinaryResource):
     @property
     def base_url(self):
         config = cloudinary.config()
-        base_url = 'https://res.cloudinary.com/{name}/'.format(name=config.cloud_name)
-        return '{base_url}{resource_type}/{type}'.format(
-            base_url=base_url, resource_type=self.resource_type, type=self.type)
+        base_url = "https://res.cloudinary.com/{name}/".format(name=config.cloud_name)
+        return "{base_url}{resource_type}/{type}".format(
+            base_url=base_url, resource_type=self.resource_type, type=self.type
+        )
 
     @property
     def versioned_public_id(self):
-        version = 'v{}/'.format(self.version) if self.version else ''  # if '/' not in self.public_id else 'v1/'
-        return '/{version}{public_id}'.format(
-            version=version, public_id=self.public_id)
+        version = (
+            "v{}/".format(self.version) if self.version else ""
+        )  # if '/' not in self.public_id else 'v1/'
+        return "/{version}{public_id}".format(version=version, public_id=self.public_id)
 
 
-def str_to_cloudinary_resource(value, resource_type='image', _type='upload'):
-    if value is '':
+def str_to_cloudinary_resource(value, resource_type="image", _type="upload"):
+    if value == "":
         return None
     m = re.match(CLOUDINARY_FIELD_DB_RE, value)
-    resource_type = m.group('resource_type') or resource_type
-    upload_type = m.group('type') or _type
+    resource_type = m.group("resource_type") or resource_type
+    upload_type = m.group("type") or _type
     return CloudinaryResource(
         type=upload_type,
         resource_type=resource_type,
-        version=m.group('version'),
-        public_id=m.group('public_id'),
-        format=m.group('format')
+        version=m.group("version"),
+        public_id=m.group("public_id"),
+        format=m.group("format"),
     )
 
 
 class CloudinaryWidget(TextInput):
-    input_type = 'text'
+    input_type = "text"
 
     class Media:
-        js = (
-            'wagtailcloudinary/js/cloudinary-field.js',
-        )
+        js = ("wagtailcloudinary/js/cloudinary-field.js",)
 
     def render(self, name, value, attrs=None, *args, **kwargs):
-        w, h = getattr(settings, 'WAGTAILCLOUDINARY_ADMIN_IMAGE_SIZE', (165, 165))
+        w, h = getattr(settings, "WAGTAILCLOUDINARY_ADMIN_IMAGE_SIZE", (165, 165))
         if isinstance(value, str):
             value = str_to_cloudinary_resource(value)
-        admin_image_version = 'w_{},h_{},c_fill'.format(w, h)
+        admin_image_version = "w_{},h_{},c_fill".format(w, h)
         context = {
-            'widget': {
-                'name': name,
-                'value': value
-            },
-            'image': value,
-            'width': w,
-            'height': h,
-            'admin_image_version': admin_image_version,
+            "widget": {"name": name, "value": value},
+            "image": value,
+            "width": w,
+            "height": h,
+            "admin_image_version": admin_image_version,
         }
         return render_to_string("wagtailcloudinary/include/input.html", context)
 
@@ -69,8 +66,8 @@ class CloudinaryField(CharField):
     description = "CloudinaryField"
 
     def __init__(self, *args, **kwargs):
-        if 'max_length' not in kwargs:
-            kwargs['max_length'] = 255
+        if "max_length" not in kwargs:
+            kwargs["max_length"] = 255
         self.type = kwargs.pop("type", "upload")
         self.resource_type = kwargs.pop("resource_type", "image")
         return super().__init__(*args, **kwargs)
@@ -81,7 +78,7 @@ class CloudinaryField(CharField):
         return str_to_cloudinary_resource(value, self.resource_type, self.type)
 
     def from_db_value(self, value, expression, connection, context):
-        if value is "":
+        if value == "":
             return None
         return self.to_python(value)
 
@@ -92,4 +89,4 @@ class CloudinaryField(CharField):
             return value
 
 
-FORMFIELD_FOR_DBFIELD_DEFAULTS[CloudinaryField] = {'widget': CloudinaryWidget}
+FORMFIELD_FOR_DBFIELD_DEFAULTS[CloudinaryField] = {"widget": CloudinaryWidget}

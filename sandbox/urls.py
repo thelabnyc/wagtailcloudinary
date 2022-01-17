@@ -17,23 +17,26 @@ from wagtail.documents.api.v2.endpoints import DocumentsAPIEndpoint
 import os
 
 
-api_router = WagtailAPIRouter('wagtailapi')
-api_router.register_endpoint('pages', PagesAPIEndpoint)
-api_router.register_endpoint('images', ImagesAPIEndpoint)
-api_router.register_endpoint('documents', DocumentsAPIEndpoint)
+api_router = WagtailAPIRouter("wagtailapi")
+api_router.register_endpoint("pages", PagesAPIEndpoint)
+api_router.register_endpoint("images", ImagesAPIEndpoint)
+api_router.register_endpoint("documents", DocumentsAPIEndpoint)
 
 urlpatterns = [
-    url(r'^api/v2/', api_router.urls),
-    url(r'^api-auth/', include('rest_framework.urls')),
-    path('admin/', admin.site.urls),
-    re_path(r'^wagtailcloudinary/', include(site.urls, namespace="wagtailcloudinary")),
-    re_path(r'^cms/', include(wagtailadmin_urls)),
-    re_path(r'^documents/', include(wagtaildocs_urls)),
-    re_path(r'^pages/', include(wagtail_urls)),
+    url(r"^api/v2/", api_router.urls),
+    url(r"^api-auth/", include("rest_framework.urls")),
+    path("admin/", admin.site.urls),
+    re_path(r"^wagtailcloudinary/", include(site.urls, namespace="wagtailcloudinary")),
+    re_path(r"^cms/", include(wagtailadmin_urls)),
+    re_path(r"^documents/", include(wagtaildocs_urls)),
+    re_path(r"^pages/", include(wagtail_urls)),
 ]
 
 if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += static(settings.MEDIA_URL + 'images/', document_root=os.path.join(settings.MEDIA_ROOT, 'images'))
 
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(
+        settings.MEDIA_URL + "images/",
+        document_root=os.path.join(settings.MEDIA_ROOT, "images"),
+    )

@@ -67,6 +67,6 @@ class SomePage(Page):
     ]
 ```
 
-Or use in a streamfield 
+Or use in a streamfield
 
 `from wagtailcloudinary.blocks import CloudinaryImageBlock`

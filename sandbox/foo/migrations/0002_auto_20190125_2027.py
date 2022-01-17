@@ -10,20 +10,39 @@ import wagtailcloudinary.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('foo', '0001_initial'),
+        ("foo", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ImageSnippet',
+            name="ImageSnippet",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', wagtailcloudinary.fields.CloudinaryField(max_length=255)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image", wagtailcloudinary.fields.CloudinaryField(max_length=255)),
             ],
         ),
         migrations.AlterField(
-            model_name='foopage',
-            name='body',
-            field=wagtail.core.fields.StreamField([('image', wagtailcloudinary.blocks.CloudinaryImageBlock()), ('snippet_image', wagtailcloudinary.blocks.CloudinarySnippetChooserBlock(sandbox.foo.snippets.ImageSnippet))], blank=True),
+            model_name="foopage",
+            name="body",
+            field=wagtail.core.fields.StreamField(
+                [
+                    ("image", wagtailcloudinary.blocks.CloudinaryImageBlock()),
+                    (
+                        "snippet_image",
+                        wagtailcloudinary.blocks.CloudinarySnippetChooserBlock(
+                            sandbox.foo.snippets.ImageSnippet
+                        ),
+                    ),
+                ],
+                blank=True,
+            ),
         ),
     ]

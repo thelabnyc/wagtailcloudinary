@@ -12,20 +12,35 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0041_group_collection_permissions_verbose_name_plural'),
+        ("wagtailcore", "0041_group_collection_permissions_verbose_name_plural"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FooPage',
+            name="FooPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('image', wagtailcloudinary.fields.CloudinaryField(max_length=255)),
-                ('body', wagtail.core.fields.StreamField([('image', wagtailcloudinary.blocks.CloudinaryImageBlock())])),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                ("image", wagtailcloudinary.fields.CloudinaryField(max_length=255)),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        [("image", wagtailcloudinary.blocks.CloudinaryImageBlock())]
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
     ]

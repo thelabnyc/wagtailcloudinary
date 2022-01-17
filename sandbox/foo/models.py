@@ -10,17 +10,20 @@ from .snippets import ImageSnippet
 
 class FooPage(Page):
     image = CloudinaryField(blank=True)
-    body = StreamField([
-        ('image', CloudinaryImageBlock(required=False)),
-        ('snippet_image', CloudinarySnippetChooserBlock(ImageSnippet)),
-    ], blank=True)
+    body = StreamField(
+        [
+            ("image", CloudinaryImageBlock(required=False)),
+            ("snippet_image", CloudinarySnippetChooserBlock(ImageSnippet)),
+        ],
+        blank=True,
+    )
 
     content_panels = Page.content_panels + [
-        FieldPanel('image', widget=CloudinaryWidget),
-        StreamFieldPanel('body'),
+        FieldPanel("image", widget=CloudinaryWidget),
+        StreamFieldPanel("body"),
     ]
 
     api_fields = [
-        APIField('image'),
-        APIField('body'),
+        APIField("image"),
+        APIField("body"),
     ]
