@@ -8,7 +8,6 @@
         }
 
         render(placeholder, name, id, initialState) {
-            console.trace();
             const html = this.html
                 .replace(/__NAME__/g, name)
                 .replace(/__ID__/g, id);
