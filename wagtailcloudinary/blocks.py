@@ -10,6 +10,9 @@ from .fields import str_to_cloudinary_resource, CloudinaryResource
 
 
 class CloudinaryImageBlock(FieldBlock):
+    class Meta:
+        icon = "image"
+
     def __init__(self, required=True, help_text=None, **kwargs):
         self.field_options = {
             "required": required,
@@ -19,14 +22,13 @@ class CloudinaryImageBlock(FieldBlock):
 
     @cached_property
     def field(self):
-        from .fields import CloudinaryWidget
+        from .widgets import CloudinaryImageChooser
 
-        field_kwargs = {"widget": CloudinaryWidget()}
-        field_kwargs.update(self.field_options)
+        field_kwargs = dict(
+            widget=CloudinaryImageChooser(),
+            **self.field_options,
+        )
         return forms.CharField(**field_kwargs)
-
-    class Meta:
-        icon = "image"
 
     def get_api_representation(self, value, context=None):
         # Treat "" as None

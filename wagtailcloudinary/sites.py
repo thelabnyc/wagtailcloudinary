@@ -80,7 +80,11 @@ class CloudinarySite:
             template_name = "wagtailcloudinary/include/browse_ajax.html"
             html = render_to_string(template_name, context)
             return JsonResponse(
-                {"html": html, "next": context.get("next_cursor", None), "tag": tag}
+                {
+                    "html": html,
+                    "next": context.get("next_cursor", None),
+                    "tag": tag,
+                }
             )
         else:
             # We don't support load more on tags.
@@ -117,17 +121,13 @@ class CloudinarySite:
     def select(self, request, path):
         slugs = path.split("/")
         slugs.insert(2, self.admin_image_version)
-        transformed = "/".join(slugs)
         return render_modal_workflow(
             request,
             None,
-            None,  # 'wagtailcloudinary/image_chosen.js',
+            None,
             json_data={
                 "step": "select",
-                "image_json": {
-                    "value": path,
-                    "url": "{}{}".format(self.base_url, transformed),
-                },
+                "image_json": path,
             },
         )
 
