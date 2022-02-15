@@ -22,7 +22,8 @@ class CloudinaryField(CharField):
             return value
         return str_to_cloudinary_resource(value, self.resource_type, self.type)
 
-    def from_db_value(self, value, expression, connection, context):
+    # Other args are expression and connection, changed when the context arg was removed in django 3.0
+    def from_db_value(self, value, *_unused_args):
         if value == "":
             return None
         return self.to_python(value)
