@@ -4,7 +4,6 @@ stages:
 variables:
   POSTGRES_HOST_AUTH_METHOD: "trust"
 
-
 precommit:
   stage: test
   image: registry.gitlab.com/thelabnyc/dind:20.04
