@@ -44,8 +44,8 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://gitlab.com/thelabnyc/wagtailcloudinary",
-    author="Davor Teskera",
-    author_email="dteskera@gmail.com",
+    author="thelabnyc",
+    author_email="thelabdev@thelabnyc.com",
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Django",
