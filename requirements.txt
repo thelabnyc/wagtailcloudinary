@@ -1,5 +1,5 @@
 Django==3.2.11
-wagtail==2.13.5
+wagtail==4.1
 cloudinary==1.28.1
 psycopg2-binary==2.9.3
 djangorestframework==3.13.1

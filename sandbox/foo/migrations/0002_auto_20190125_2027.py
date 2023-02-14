@@ -2,13 +2,12 @@
 
 from django.db import migrations, models
 import sandbox.foo.snippets
-import wagtail.core.fields
+import wagtail.fields
 import wagtailcloudinary.blocks
 import wagtailcloudinary.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("foo", "0001_initial"),
     ]
@@ -32,7 +31,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="foopage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     ("image", wagtailcloudinary.blocks.CloudinaryImageBlock()),
                     (
