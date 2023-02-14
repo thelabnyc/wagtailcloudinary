@@ -1,7 +1,8 @@
-from wagtail.core.models import Page
-from wagtail.core.fields import StreamField
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+from wagtail.models import Page
+from wagtail.fields import StreamField
+from wagtail.admin.panels import FieldPanel
+from wagtailcloudinary.fields import CloudinaryField
+from wagtailcloudinary.widgets import AdminCloudinaryChooser
 from wagtailcloudinary.blocks import CloudinaryImageBlock, CloudinarySnippetChooserBlock
 from wagtail.api import APIField
 
@@ -16,11 +17,12 @@ class FooPage(Page):
             ("snippet_image", CloudinarySnippetChooserBlock(ImageSnippet)),
         ],
         blank=True,
+        use_json_field=True,
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel("image", widget=CloudinaryWidget),
-        StreamFieldPanel("body"),
+        FieldPanel("image", widget=AdminCloudinaryChooser),
+        FieldPanel("body"),
     ]
 
     api_fields = [

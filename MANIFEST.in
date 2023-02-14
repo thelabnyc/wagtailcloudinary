@@ -1,6 +1,6 @@
 include LICENSE
 include README.md
-recursive-include wagtailcloudinary/static *
-recursive-include wagtailcloudinary/templates *
-recursive-include wagtailcloudinary/templatetags *
+recursive-include src/wagtailcloudinary/static *
+recursive-include src/wagtailcloudinary/templates *
+recursive-include src/wagtailcloudinary/templatetags *
 recursive-exclude sandbox/* *

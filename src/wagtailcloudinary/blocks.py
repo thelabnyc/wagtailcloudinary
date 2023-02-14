@@ -1,15 +1,12 @@
-from django import forms
 from django.forms.models import model_to_dict
-
 from django.utils.functional import cached_property
-
-from wagtail.core.blocks import FieldBlock
+from wagtail.blocks import ChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
+from .utils import str_to_cloudinary_resource, CloudinaryResource
+import re
 
-from .fields import str_to_cloudinary_resource, CloudinaryResource
 
-
-class CloudinaryImageBlock(FieldBlock):
+class CloudinaryImageBlock(ChooserBlock):
     class Meta:
         icon = "image"
 
@@ -21,14 +18,27 @@ class CloudinaryImageBlock(FieldBlock):
         super().__init__(**kwargs)
 
     @cached_property
-    def field(self):
-        from .widgets import CloudinaryImageChooser
+    def target_model(self):
+        from .models import CloudinaryImage
 
-        field_kwargs = dict(
-            widget=CloudinaryImageChooser(),
-            **self.field_options,
-        )
-        return forms.CharField(**field_kwargs)
+        return CloudinaryImage
+
+    @cached_property
+    def widget(self):
+        from .widgets import AdminCloudinaryChooser
+
+        return AdminCloudinaryChooser()
+
+    def to_python(self, value):
+        value = self.prep_image_pk(value)
+        return super().to_python(value)
+
+    def bulk_to_python(self, values):
+        values = [self.prep_image_pk(value) for value in values]
+        return super().bulk_to_python(values)
+
+    def prep_image_pk(self, value):
+        return re.sub(r"^image\/upload\/v\d+\/", "", value, count=1)
 
     def get_api_representation(self, value, context=None):
         # Treat "" as None

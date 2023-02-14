@@ -4,9 +4,6 @@ from .utils import str_to_cloudinary_resource, CloudinaryResource
 from . import widgets
 
 
-CloudinaryWidget = widgets.CloudinaryImageChooser  # For backwards compat
-
-
 class CloudinaryField(CharField):
     description = "CloudinaryField"
 
@@ -36,5 +33,5 @@ class CloudinaryField(CharField):
 
 
 FORMFIELD_FOR_DBFIELD_DEFAULTS[CloudinaryField] = {
-    "widget": CloudinaryWidget,
+    "widget": widgets.AdminCloudinaryChooser,
 }

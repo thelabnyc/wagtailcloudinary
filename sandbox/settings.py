@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.core",
+    "wagtail",
     "wagtail.api.v2",
     "rest_framework",
     "modelcluster",
@@ -121,6 +121,7 @@ TEMPLATES = [
 
 MEDIA_URL = "/media/"
 
+WAGTAILADMIN_BASE_URL = "https://example.com"
 WAGTAIL_SITE_NAME = "My Example Site"
 
 cloudinary.config(
@@ -128,3 +129,5 @@ cloudinary.config(
     api_key=os.getenv("CLOUDINARY_API_KEY", ""),
     api_secret=os.getenv("CLOUDINARY_API_SECRET", ""),
 )
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

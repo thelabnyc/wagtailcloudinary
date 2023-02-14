@@ -15,6 +15,7 @@ This package adds Cloudinary support to Wagtail CMS
 Wagtail 2.4 and Django 2.1 are supported.
 
 ## Configuration
+
 Add app wagtailcloudinary in your INSTALLED_APPS list. Also add cloudinary if not already done.
 
 ```
@@ -57,13 +58,14 @@ in models.py
 ```
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailcore.models import Page
-from wagtailcloudinary.fields import CloudinaryField, CloudinaryWidget
+from wagtailcloudinary.fields import CloudinaryField
+from wagtailcloudinary.widgets import AdminCloudinaryChooser
 
 class SomePage(Page):
     image = CloudinaryField()
 
     content_panels = Page.content_panels + [
-        FieldPanel('image', widget=CloudinaryWidget),
+        FieldPanel('image', widget=AdminCloudinaryChooser),
     ]
 ```
 

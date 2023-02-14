@@ -2,13 +2,12 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 import wagtailcloudinary.blocks
 import wagtailcloudinary.fields
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -33,7 +32,7 @@ class Migration(migrations.Migration):
                 ("image", wagtailcloudinary.fields.CloudinaryField(max_length=255)),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [("image", wagtailcloudinary.blocks.CloudinaryImageBlock())]
                     ),
                 ),
