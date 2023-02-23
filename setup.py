@@ -39,7 +39,7 @@ setup(
     install_requires=install_requires,
     extras_require=extras_require,
     include_package_data=True,
-    license="BSD Licence",
+    license="ISC",
     description="Cloudinary support for Wagtail CMS",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
