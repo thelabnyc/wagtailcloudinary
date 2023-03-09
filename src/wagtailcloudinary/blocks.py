@@ -41,7 +41,7 @@ class CloudinaryImageBlock(ChooserBlock):
         return re.sub(r"^image\/upload\/v\d+\/", "", value or "", count=1)
 
     def get_prep_value(self, value):
-        return value
+        return getattr(value, "public_id", value)
 
     def get_api_representation(self, value, context=None):
         # Treat "" as None
