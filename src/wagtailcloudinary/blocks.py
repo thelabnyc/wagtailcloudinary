@@ -38,14 +38,20 @@ class CloudinaryImageBlock(ChooserBlock):
         return super().bulk_to_python(values)
 
     def prep_image_pk(self, value):
-        return re.sub(r"^image\/upload\/v\d+\/", "", value, count=1)
+        return re.sub(r"^image\/upload\/v\d+\/", "", value or "", count=1)
+
+    def get_prep_value(self, value):
+        return getattr(value, "public_id", value)
 
     def get_api_representation(self, value, context=None):
         # Treat "" as None
         if value == "":
             value = None
-        if value is not None:
-            value = str_to_cloudinary_resource(value).public_id
+        elif value is not None:
+            value = (
+                getattr(value, "public_id", None)
+                or str_to_cloudinary_resource(value).public_id
+            )
         return super().get_api_representation(value, context)
 
 
