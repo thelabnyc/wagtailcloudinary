@@ -15,7 +15,7 @@ class CloudinaryImageBlock(ChooserBlock):
             "required": required,
             "help_text": help_text,
         }
-        super().__init__(**kwargs)
+        super().__init__(required, help_text, **kwargs)
 
     @cached_property
     def target_model(self):
