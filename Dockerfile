@@ -1,11 +1,7 @@
-FROM python:3.11
-ENV PYTHONUNBUFFERED 1
+FROM registry.gitlab.com/thelabnyc/python:py311
 
 RUN mkdir /code
 WORKDIR /code
 
-ADD requirements.txt /code/
-RUN pip install -r requirements.txt
-
 ADD . /code/
-RUN pip install -e .
+RUN poetry install
