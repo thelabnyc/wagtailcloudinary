@@ -5,7 +5,7 @@ from wagtail import hooks
 from .views.chooser import viewset as cloudinary_viewset
 
 
-@hooks.register("insert_editor_css")
+@hooks.register("insert_global_admin_css")
 def global_admin_css():
     return format_html(
         '<link rel="stylesheet" href="{}">', static("wagtailcloudinary/css/main.css")
