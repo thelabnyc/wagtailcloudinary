@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "wagtailcloudinary"
-version = "2.0.0b3.post4"
+version = "2.0.0"
 description = "Cloudinary support for Wagtail CMS"
 authors = [ "thelabnyc <thelabdev@thelabnyc.com>",]
 readme = "README.md"
