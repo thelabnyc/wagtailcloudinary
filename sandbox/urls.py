@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.conf.urls import url
-from django.urls import path, re_path, include
+from django.urls import path, include
 from django.conf import settings
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -21,12 +20,12 @@ api_router.register_endpoint("images", ImagesAPIViewSet)
 api_router.register_endpoint("documents", DocumentsAPIViewSet)
 
 urlpatterns = [
-    url(r"^api/v2/", api_router.urls),
-    url(r"^api-auth/", include("rest_framework.urls")),
+    path("api/v2/", api_router.urls),
+    path("api-auth/", include("rest_framework.urls")),
     path("admin/", admin.site.urls),
-    re_path(r"^cms/", include(wagtailadmin_urls)),
-    re_path(r"^documents/", include(wagtaildocs_urls)),
-    re_path(r"^pages/", include(wagtail_urls)),
+    path("cms/", include(wagtailadmin_urls)),
+    path("documents/", include(wagtaildocs_urls)),
+    path("pages/", include(wagtail_urls)),
 ]
 
 if settings.DEBUG:
