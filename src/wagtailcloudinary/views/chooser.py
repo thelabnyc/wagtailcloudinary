@@ -46,6 +46,9 @@ class BaseCloudinaryChooseView(BaseChooseView):
             tag=tag_filter,
             page_size=25,
             next_cursor=cursor,
+            alive_only=(
+                False if tag_filter else True
+            ),  # fetching assets by using "resources_by_tag" only returns active images.
         )
         return page
 
