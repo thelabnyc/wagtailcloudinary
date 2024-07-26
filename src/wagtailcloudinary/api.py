@@ -47,18 +47,29 @@ class CloudinaryPage(collections.abc.Sequence):
 
 
 class CloudinaryBrowser:
-    def get_images(self, tag=None, page_size=10, next_cursor=None):
+    def get_images(self, tag=None, page_size=10, next_cursor=None, alive_only=False):
         # Fetch a page of results from the API
-        params = {
-            "max_results": page_size,
-            "tags": True,
-        }
-        if next_cursor:
-            params["next_cursor"] = next_cursor
-        if tag:
-            response = cloudinary.api.resources_by_tag(tag, **params)
+        if alive_only:
+            response = (
+                cloudinary.Search()
+                .expression("status:active")
+                .sort_by("created_at", "desc")
+                .max_results(page_size)
+                .next_cursor(next_cursor or "")
+                .with_field("tags")
+                .execute()
+            )
         else:
-            response = cloudinary.api.resources(**params)
+            params = {
+                "max_results": page_size,
+                "tags": True,
+            }
+            if next_cursor:
+                params["next_cursor"] = next_cursor
+            if tag:
+                response = cloudinary.api.resources_by_tag(tag, **params)
+            else:
+                response = cloudinary.api.resources(**params)
         # Insert/update API results into the DB
         images = self.insupd_images(response) if len(response["resources"]) > 0 else []
         # Return a page of results
