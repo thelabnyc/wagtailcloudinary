@@ -1,5 +1,11 @@
 # Changes
 
+## v2.1.2b0 (2024-08-08)
+
+### Fix
+
+-   **deps**: update dependency cloudinary to ~1.41.0
+
 ## v2.1.1 (2024-07-26)
 
 ### Fix
