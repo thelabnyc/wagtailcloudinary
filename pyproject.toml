@@ -18,7 +18,7 @@ from = "src"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-cloudinary = "~1.42.1"
+cloudinary = "~1.42.2"
 python-dateutil = ">=2.9.0.post0"
 wagtail = ">=5.2.6,<6.4"
 
