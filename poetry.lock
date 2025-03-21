@@ -200,13 +200,13 @@ files = [
 
 [[package]]
 name = "cloudinary"
-version = "1.42.2"
+version = "1.43.0"
 description = "Python and Django SDK for Cloudinary"
 optional = false
 python-versions = "*"
 files = [
-    {file = "cloudinary-1.42.2-py3-none-any.whl", hash = "sha256:ba223705409b2aaddd5196c2184d65f50a83dffcba3b94f3727658ff6a0172a3"},
-    {file = "cloudinary-1.42.2.tar.gz", hash = "sha256:e4191b470c5bae55542b64e0a78659af42971880294456dca480bc974fa9280a"},
+    {file = "cloudinary-1.43.0-py3-none-any.whl", hash = "sha256:cdfe53473fd9564cfb3ff99f93fc6d3a1928f81e7e81920d1b3373bc9768cbd4"},
+    {file = "cloudinary-1.43.0.tar.gz", hash = "sha256:d2b4ce247e0fff558fd8326df5db7c94bce15521c5ff53edafbe1bb2e8128cef"},
 ]
 
 [package.dependencies]
@@ -1276,4 +1276,4 @@ wand = ["Wand (>=0.6,<1.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "34472c8cb6361e60b5652e13ca1ade793727de940b90b433bece2c6763b33ba6"
+content-hash = "069f5dfeacb4c0c1d4caaeb587d1238436df8940ddcd7cbeffb3a6dfc24dee01"
