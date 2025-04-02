@@ -33,7 +33,7 @@ class AdminCloudinaryChooser(BaseChooser):
         return context
 
     def render_js_init(self, id_, name, value_data):
-        return "new CloudinaryChooser({0});".format(json.dumps(id_))
+        return f"new CloudinaryChooser({json.dumps(id_)});"
 
     @property
     def media(self):

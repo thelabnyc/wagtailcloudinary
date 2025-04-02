@@ -8,7 +8,7 @@ class CloudinaryResource(cloudinary.CloudinaryResource):
     @property
     def base_url(self):
         config = cloudinary.config()
-        base_url = "https://res.cloudinary.com/{name}/".format(name=config.cloud_name)
+        base_url = f"https://res.cloudinary.com/{config.cloud_name}/"
         return "{base_url}{resource_type}/{type}".format(
             base_url=base_url, resource_type=self.resource_type, type=self.type
         )
@@ -16,9 +16,9 @@ class CloudinaryResource(cloudinary.CloudinaryResource):
     @property
     def versioned_public_id(self):
         version = (
-            "v{}/".format(self.version) if self.version else ""
+            f"v{self.version}/" if self.version else ""
         )  # if '/' not in self.public_id else 'v1/'
-        return "/{version}{public_id}".format(version=version, public_id=self.public_id)
+        return f"/{version}{self.public_id}"
 
 
 def str_to_cloudinary_resource(value, resource_type="image", _type="upload"):

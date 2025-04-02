@@ -13,7 +13,7 @@ class Command(BaseCommand):
         }
         i = 0
         # Import all of the images from cloudinary
-        imported_pks = set([])
+        imported_pks = set()
         while True:
             i += 1
             # Import a page of images
