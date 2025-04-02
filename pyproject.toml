@@ -17,10 +17,10 @@ include = "wagtailcloudinary"
 from = "src"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 cloudinary = "~1.43.0"
 python-dateutil = ">=2.9.0.post0"
-wagtail = ">=5.2.6,<6.4"
+wagtail = ">=6.3"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = ">=7.2.0"
