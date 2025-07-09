@@ -3,6 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import wagtail.fields
+
 import wagtailcloudinary.blocks
 import wagtailcloudinary.fields
 

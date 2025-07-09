@@ -2,7 +2,8 @@ from django.db import models
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
-from taggit.models import TaggedItemBase, Tag
+from taggit.models import Tag, TaggedItemBase
+
 from .utils import CloudinaryResource
 
 
@@ -37,9 +38,7 @@ class CloudinaryImage(models.Model):
     def popular_tags(cls, count=10):
         """Return a queryset of the most frequently used tags used on this model class"""
         return (
-            Tag.objects.filter(
-                wagtailcloudinary_taggedcloudinaryimage_items__isnull=False
-            )
+            Tag.objects.filter(wagtailcloudinary_taggedcloudinaryimage_items__isnull=False)
             .annotate(item_count=Count("wagtailcloudinary_taggedcloudinaryimage_items"))
             .order_by("-item_count")[:count]
         )

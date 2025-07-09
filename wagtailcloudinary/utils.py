@@ -1,7 +1,10 @@
-import cloudinary
 import re
 
-CLOUDINARY_FIELD_DB_RE = r"(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$"  # NOQA
+import cloudinary
+
+CLOUDINARY_FIELD_DB_RE = (
+    r"(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$"  # NOQA
+)
 
 
 class CloudinaryResource(cloudinary.CloudinaryResource):
@@ -9,15 +12,11 @@ class CloudinaryResource(cloudinary.CloudinaryResource):
     def base_url(self):
         config = cloudinary.config()
         base_url = f"https://res.cloudinary.com/{config.cloud_name}/"
-        return "{base_url}{resource_type}/{type}".format(
-            base_url=base_url, resource_type=self.resource_type, type=self.type
-        )
+        return f"{base_url}{self.resource_type}/{self.type}"
 
     @property
     def versioned_public_id(self):
-        version = (
-            f"v{self.version}/" if self.version else ""
-        )  # if '/' not in self.public_id else 'v1/'
+        version = f"v{self.version}/" if self.version else ""  # if '/' not in self.public_id else 'v1/'
         return f"/{version}{self.public_id}"
 
 

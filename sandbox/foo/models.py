@@ -1,10 +1,11 @@
-from wagtail.models import Page
-from wagtail.fields import StreamField
 from wagtail.admin.panels import FieldPanel
+from wagtail.api import APIField
+from wagtail.fields import StreamField
+from wagtail.models import Page
+
+from wagtailcloudinary.blocks import CloudinaryImageBlock, CloudinarySnippetChooserBlock
 from wagtailcloudinary.fields import CloudinaryField
 from wagtailcloudinary.widgets import AdminCloudinaryChooser
-from wagtailcloudinary.blocks import CloudinaryImageBlock, CloudinarySnippetChooserBlock
-from wagtail.api import APIField
 
 from .snippets import ImageSnippet
 
