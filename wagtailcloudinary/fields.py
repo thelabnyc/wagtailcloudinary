@@ -1,7 +1,8 @@
 from django.contrib.admin.options import FORMFIELD_FOR_DBFIELD_DEFAULTS
 from django.db.models import CharField
-from .utils import str_to_cloudinary_resource, CloudinaryResource
+
 from . import widgets
+from .utils import CloudinaryResource, str_to_cloudinary_resource
 
 
 class CloudinaryField(CharField):

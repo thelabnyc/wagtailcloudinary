@@ -1,5 +1,4 @@
-from django.urls import reverse
-from django.urls import path
+from django.urls import path, reverse
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import View
@@ -13,8 +12,9 @@ from wagtail.admin.views.generic.chooser import (
     CreationFormMixin,
 )
 from wagtail.admin.viewsets.chooser import ChooserViewSet
-from ..models import CloudinaryImage
+
 from ..api import CloudinaryBrowser
+from ..models import CloudinaryImage
 
 
 class CloudinaryChosenResponseMixin(ChosenResponseMixin):
@@ -46,9 +46,7 @@ class BaseCloudinaryChooseView(BaseChooseView):
             tag=tag_filter,
             page_size=25,
             next_cursor=cursor,
-            alive_only=(
-                False if tag_filter else True
-            ),  # fetching assets by using "resources_by_tag" only returns active images.
+            alive_only=(False if tag_filter else True),  # fetching assets by using "resources_by_tag" only returns active images.
         )
         return page
 
@@ -73,15 +71,11 @@ class CloudinaryChooseViewMixin(ChooseViewMixin):
         return json_data
 
 
-class CloudinaryChooseView(
-    CloudinaryChooseViewMixin, CloudinaryCreationFormMixin, BaseCloudinaryChooseView
-):
+class CloudinaryChooseView(CloudinaryChooseViewMixin, CloudinaryCreationFormMixin, BaseCloudinaryChooseView):
     pass
 
 
-class CloudinaryChooseResultsView(
-    ChooseResultsViewMixin, CloudinaryCreationFormMixin, BaseCloudinaryChooseView
-):
+class CloudinaryChooseResultsView(ChooseResultsViewMixin, CloudinaryCreationFormMixin, BaseCloudinaryChooseView):
     pass
 
 

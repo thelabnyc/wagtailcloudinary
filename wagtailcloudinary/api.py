@@ -1,8 +1,10 @@
-from .models import CloudinaryImage
 import collections.abc
+import logging
+
 import cloudinary.api
 import dateutil.parser
-import logging
+
+from .models import CloudinaryImage
 
 logger = logging.getLogger(__name__)
 
@@ -20,10 +22,7 @@ class CloudinaryPage(collections.abc.Sequence):
 
     def __getitem__(self, index):
         if not isinstance(index, (int, slice)):
-            raise TypeError(
-                "CloudinaryPage indices must be integers or slices, not %s."
-                % type(index).__name__
-            )
+            raise TypeError("CloudinaryPage indices must be integers or slices, not %s." % type(index).__name__)
         # The items is converted to a list so that if it was a QuerySet
         # it won't be a database hit per __getitem__.
         if not isinstance(self.items, list):
@@ -88,12 +87,7 @@ class CloudinaryBrowser:
         resources = {r["public_id"]: r for r in response["resources"]}
 
         # Find all the rows that already exist and update them with the latest metadata
-        existing_objs = [
-            self.update_meta_fields(obj, resources[obj.pk])
-            for obj in CloudinaryImage.objects.filter(
-                public_id__in=resources.keys()
-            ).all()
-        ]
+        existing_objs = [self.update_meta_fields(obj, resources[obj.pk]) for obj in CloudinaryImage.objects.filter(public_id__in=resources.keys()).all()]
         CloudinaryImage.objects.bulk_update(
             existing_objs,
             list(self.get_meta_fields(response["resources"][0]).keys()),

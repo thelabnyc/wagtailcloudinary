@@ -1,3 +1,5 @@
+import json
+
 from django import forms
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
@@ -5,8 +7,8 @@ from wagtail.admin.staticfiles import versioned_static
 from wagtail.admin.widgets import BaseChooser
 from wagtail.telepath import register
 from wagtail.widget_adapters import WidgetAdapter
+
 from .models import CloudinaryImage
-import json
 
 
 class AdminCloudinaryChooser(BaseChooser):

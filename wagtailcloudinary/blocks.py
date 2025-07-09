@@ -1,9 +1,11 @@
+import re
+
 from django.forms.models import model_to_dict
 from django.utils.functional import cached_property
 from wagtail.blocks import ChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
-from .utils import str_to_cloudinary_resource, CloudinaryResource
-import re
+
+from .utils import CloudinaryResource, str_to_cloudinary_resource
 
 
 class CloudinaryImageBlock(ChooserBlock):
@@ -48,10 +50,7 @@ class CloudinaryImageBlock(ChooserBlock):
         if value == "":
             value = None
         elif value is not None:
-            value = (
-                getattr(value, "public_id", None)
-                or str_to_cloudinary_resource(value).public_id
-            )
+            value = getattr(value, "public_id", None) or str_to_cloudinary_resource(value).public_id
         return super().get_api_representation(value, context)
 
 

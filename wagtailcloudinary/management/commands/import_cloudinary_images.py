@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+
 from wagtailcloudinary.api import CloudinaryBrowser
 from wagtailcloudinary.models import CloudinaryImage
 
@@ -31,9 +32,4 @@ class Command(BaseCommand):
                 break
         # Delete any images from our DB that were missing form cloudinary
         deleted = CloudinaryImage.objects.exclude(pk__in=imported_pks).all().delete()
-        self.stdout.write(
-            self.style.SUCCESS(
-                "Done. Imported %s rows and deleted %s rows"
-                % (len(imported_pks), deleted[0])
-            )
-        )
+        self.stdout.write(self.style.SUCCESS(f"Done. Imported {len(imported_pks)} rows and deleted {deleted[0]} rows"))
