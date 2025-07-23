@@ -26,7 +26,7 @@ Homepage = "https://gitlab.com/thelabnyc/wagtailcloudinary"
 Repository = "https://gitlab.com/thelabnyc/wagtailcloudinary"
 
 [dependency-groups]
-dev = ["ruff (>=0.11.6)", "tox==4.27.0", "ipdb (==0.13.13)", "tox-uv>=1.26.1"]
+dev = ["ruff (>=0.11.6)", "tox==4.28.0", "ipdb (==0.13.13)", "tox-uv>=1.26.1"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["wagtailcloudinary"]
