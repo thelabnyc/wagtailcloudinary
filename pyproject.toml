@@ -8,7 +8,7 @@ version = "2.3.0"
 description = "Cloudinary support for Wagtail CMS"
 readme = "README.md"
 dependencies = [
-    "cloudinary (>=1.44.0,<1.45)",
+    "cloudinary (>=1.44.1,<1.45)",
     "python-dateutil (>=2.9.0.post0)",
     "wagtail (>=6.3)",
 ]
