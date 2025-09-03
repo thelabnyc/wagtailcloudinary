@@ -1,5 +1,23 @@
 # Changes
 
+## v2.3.0 (2025-09-03)
+
+### Feat
+
+- support Django 5.2 / Python 3.13 / Wagtail 6.4. Drop Django 5.0 / Python 3.10 / Wagtail 5.2
+
+### Fix
+
+- update docker image tag format
+- **deps**: update dependency cloudinary to ~1.44.0
+- **deps**: update dependency cloudinary to ~1.43.0
+
+### Refactor
+
+- migrate black/flake8 -> ruff
+- migrate from poetry -> uv
+- add pyupgrade / django-upgrade precommit hooks
+
 ## v2.2.2 (2025-03-10)
 
 ### Fix
