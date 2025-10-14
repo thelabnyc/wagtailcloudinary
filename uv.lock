@@ -954,7 +954,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "ipdb", specifier = "==0.13.13" },
-    { name = "ruff", specifier = ">=0.13.3" },
+    { name = "ruff", specifier = ">=0.14.0" },
     { name = "tox", specifier = "==4.31.0" },
     { name = "tox-uv", specifier = ">=1.28.0" },
 ]
