@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    image: postgres:17@sha256:2b6239f32680c308921cf212902f881355c31ae92da0795b4fef29d8f0033021
+    image: postgres:17@sha256:ecebd237d9aaf83112427807848bc41ba6bd4df8a2f6936e09f7db1813609625
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
 
