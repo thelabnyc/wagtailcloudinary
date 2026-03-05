@@ -1024,7 +1024,7 @@ dev = [
     { name = "ipdb", specifier = "==0.13.13" },
     { name = "ruff", specifier = ">=0.15.4" },
     { name = "tox", specifier = "==4.47.0" },
-    { name = "tox-uv", specifier = ">=1.33.0" },
+    { name = "tox-uv", specifier = ">=1.33.1" },
 ]
 
 [[package]]
