@@ -3,7 +3,7 @@ import re
 import cloudinary
 
 CLOUDINARY_FIELD_DB_RE = (
-    r"(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$"  # NOQA
+    r"(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$"
 )
 
 

@@ -63,7 +63,7 @@ class CloudinarySnippetChooserBlock(SnippetChooserBlock):
 
     def get_api_representation(self, value, context=None):
         snippet_dict = model_to_dict(value)
-        for key, value in snippet_dict.items():
-            if type(value) is CloudinaryResource:
-                snippet_dict[key] = value.public_id
+        for key, field_value in snippet_dict.items():
+            if type(field_value) is CloudinaryResource:
+                snippet_dict[key] = field_value.public_id
         return snippet_dict

@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.fields import StreamField
@@ -26,7 +28,7 @@ class FooPage(Page):
         FieldPanel("body"),
     ]
 
-    api_fields = [
+    api_fields: ClassVar[list[APIField]] = [
         APIField("image"),
         APIField("body"),
     ]

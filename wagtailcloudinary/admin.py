@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from django.contrib import admin
 
 from . import models
@@ -5,7 +7,7 @@ from . import models
 
 @admin.register(models.CloudinaryImage)
 class ClientAdmin(admin.ModelAdmin):
-    fields = [
+    fields: ClassVar[list[str]] = [
         "public_id",
         "upload_type",
         "resource_type",
@@ -18,8 +20,8 @@ class ClientAdmin(admin.ModelAdmin):
     ]
     readonly_fields = fields
     list_display = fields
-    search_fields = ["public_id"]
-    list_filter = ["created_at", "tags"]
+    search_fields: ClassVar[list[str]] = ["public_id"]
+    list_filter: ClassVar[list[str]] = ["created_at", "tags"]
 
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related("tags")
