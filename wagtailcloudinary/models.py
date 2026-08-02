@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from django.db import models
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
@@ -32,7 +34,7 @@ class CloudinaryImage(models.Model):
     class Meta:
         verbose_name = _("Cloudinary Image")
         verbose_name_plural = _("Cloudinary Images")
-        ordering = ["-created_at"]
+        ordering: ClassVar[list[str]] = ["-created_at"]
 
     @classmethod
     def popular_tags(cls, count=10):

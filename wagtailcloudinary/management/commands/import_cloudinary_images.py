@@ -21,7 +21,7 @@ class Command(BaseCommand):
             page = browser.get_images(**kwargs)
             for img in page.items:
                 imported_pks.add(img.pk)
-            self.stdout.write(self.style.SUCCESS("Imported page %s" % i))
+            self.stdout.write(self.style.SUCCESS(f"Imported page {i}"))
             # Continue to next page, if one exists.
             if page.next_cursor:
                 kwargs["next_cursor"] = page.next_cursor

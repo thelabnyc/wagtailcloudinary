@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 class CloudinaryPage(collections.abc.Sequence):
-    def __init__(self, items=[], next_cursor=None):
-        self.items = items
+    def __init__(self, items=None, next_cursor=None):
+        self.items = [] if items is None else items
         self.next_cursor = next_cursor
 
     def __repr__(self):
@@ -22,7 +22,7 @@ class CloudinaryPage(collections.abc.Sequence):
 
     def __getitem__(self, index):
         if not isinstance(index, (int, slice)):
-            raise TypeError("CloudinaryPage indices must be integers or slices, not %s." % type(index).__name__)
+            raise TypeError(f"CloudinaryPage indices must be integers or slices, not {type(index).__name__}.")
         # The items is converted to a list so that if it was a QuerySet
         # it won't be a database hit per __getitem__.
         if not isinstance(self.items, list):

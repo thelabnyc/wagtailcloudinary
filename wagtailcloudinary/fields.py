@@ -13,7 +13,7 @@ class CloudinaryField(CharField):
             kwargs["max_length"] = 255
         self.type = kwargs.pop("type", "upload")
         self.resource_type = kwargs.pop("resource_type", "image")
-        return super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_python(self, value):
         if not value or isinstance(value, CloudinaryResource):
