@@ -213,16 +213,16 @@ wheels = [
 
 [[package]]
 name = "cloudinary"
-version = "1.45.0"
+version = "1.46.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
     { name = "six" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e2/5b/d17312bcebe524fc28a4b9032fc158737e991cde49cef7f86d18593c50c9/cloudinary-1.45.0.tar.gz", hash = "sha256:711404bfbdf87965afbefdb747ae78a03188b513846cccb0c1f8a8c612e375ba", size = 192094, upload-time = "2026-07-01T10:10:29.688Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/97/0e/a1beef32bf4abb896aa4b8d229535fb68acc53354be8624b9a78678331ec/cloudinary-1.46.0.tar.gz", hash = "sha256:f33ad786277748649d235b3d00f3afe058931f7bd1f516ccc89756f48802135a", size = 202175, upload-time = "2026-08-18T16:02:17.038Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c0/6d/5419a09c4ec2b7baf2723fbfc823bfbfea9ceeac177b30e01250ed23da2c/cloudinary-1.45.0-py3-none-any.whl", hash = "sha256:46c333101811841cf446c46054f4d9b507c2fa34c25152d1e922586c3b746196", size = 149030, upload-time = "2026-07-01T10:10:28.561Z" },
+    { url = "https://files.pythonhosted.org/packages/b4/d0/c758c521a457d61b961d42a192c024e1ad74e4809149d302b5a01d2e8da6/cloudinary-1.46.0-py3-none-any.whl", hash = "sha256:a8ac2d39b35c20e526c7a1e4eb63e13bcdf5b224736ae56a9bcc236faadb95e8", size = 153066, upload-time = "2026-08-18T16:02:15.917Z" },
 ]
 
 [[package]]
@@ -1131,7 +1131,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cloudinary", specifier = ">=1.45.0,<1.46" },
+    { name = "cloudinary", specifier = ">=1.46.0,<1.47" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
     { name = "wagtail", specifier = ">=7.0" },
 ]
