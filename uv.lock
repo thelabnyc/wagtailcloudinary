@@ -1312,7 +1312,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cloudinary", specifier = ">=1.46.2,<1.47" },
+    { name = "cloudinary", specifier = ">=1.46.3,<1.47" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
     { name = "wagtail", specifier = ">=7.0" },
 ]
