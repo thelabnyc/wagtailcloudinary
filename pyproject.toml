@@ -10,7 +10,7 @@ readme = "README.md"
 dependencies = [
     "cloudinary (>=1.46.3,<1.47)",
     "python-dateutil (>=3.0.0)",
-    "wagtail (>=7.0)",
+    "wagtail (>=7.4)",
 ]
 requires-python = ">=3.12"
 

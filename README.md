@@ -12,7 +12,7 @@ This package adds Cloudinary support to Wagtail CMS
 
 `pip install wagtailcloudinary`
 
-Wagtail 2.4 and Django 2.1 are supported.
+Wagtail 7.4 and 8.0 are supported, on Django 5.2, 6.0, and 6.1 (Django 6.1 needs Wagtail 8.0).
 
 ## Configuration
 
