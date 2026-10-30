@@ -1,5 +1,29 @@
 # Changes
 
+## v2.4.0 (2026-10-30)
+
+### Feat
+
+- support Wagtail 8.0 and Django 6.0/6.1, drop Wagtail 7.0
+- support Python 3.15 and drop Python 3.11
+- add wagtail 7.4 LTS to test matrix
+- support Python 3.14
+
+### Fix
+
+- add django.contrib.postgres to the sandbox apps
+- **deps**: update dependency python-dateutil to >=3.0.0
+- **deps**: update dependency cloudinary to >=1.46.3,<1.47
+- **deps**: update dependency cloudinary to >=1.46.2,<1.47
+- **deps**: update dependency cloudinary to >=1.46.0,<1.47
+- **deps**: update dependency cloudinary to >=1.45.0,<1.46
+- **deps**: update dependency cloudinary to >=1.44.4,<1.45
+- **deps**: update dependency cloudinary to >=1.44.3,<1.45
+- **deps**: update dependency cloudinary to >=1.44.2,<1.45
+- **deps**: update dependency wagtail to >=7.0
+- prevent renovate from pointing all URLs at gitlab
+- **deps**: update dependency cloudinary to >=1.44.1,<1.45
+
 ## v2.3.0 (2025-09-03)
 
 ### Feat
