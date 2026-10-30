@@ -12,7 +12,7 @@ dependencies = [
     "python-dateutil (>=3.0.0)",
     "wagtail (>=7.0)",
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 
 [project.license]
 text = "ISC"
