@@ -10,7 +10,7 @@ readme = "README.md"
 dependencies = [
     "cloudinary (>=1.46.3,<1.47)",
     "python-dateutil (>=3.0.0)",
-    "wagtail (>=7.0)",
+    "wagtail (>=7.4)",
 ]
 requires-python = ">=3.12"
 
@@ -27,6 +27,7 @@ Repository = "https://gitlab.com/thelabnyc/wagtailcloudinary"
 
 [dependency-groups]
 dev = ["ruff (>=0.17.3)", "tox==4.67.2", "ipdb (==0.13.13)", "tox-uv>=1.37.1"]
+test = ["psycopg[binary] (>=3.3.6)"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["wagtailcloudinary"]
