@@ -1314,7 +1314,7 @@ test = [
 [package.metadata]
 requires-dist = [
     { name = "cloudinary", specifier = ">=1.46.3,<1.47" },
-    { name = "python-dateutil", specifier = ">=3.0.0" },
+    { name = "python-dateutil", specifier = ">=4.0.0" },
     { name = "wagtail", specifier = ">=7.4" },
 ]
 
