@@ -1325,7 +1325,7 @@ dev = [
     { name = "tox", specifier = "==4.67.8" },
     { name = "tox-uv", specifier = ">=1.37.4" },
 ]
-test = [{ name = "psycopg", extras = ["binary"], specifier = ">=3.3.7" }]
+test = [{ name = "psycopg", extras = ["binary"], specifier = ">=3.3.8" }]
 
 [[package]]
 name = "wcwidth"
