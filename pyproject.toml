@@ -26,7 +26,7 @@ Homepage = "https://gitlab.com/thelabnyc/wagtailcloudinary"
 Repository = "https://gitlab.com/thelabnyc/wagtailcloudinary"
 
 [dependency-groups]
-dev = ["ruff (>=0.17.4)", "tox==4.67.13", "ipdb (==0.13.13)", "tox-uv>=1.37.6"]
+dev = ["ruff (>=0.17.4)", "tox==4.67.13", "ipdb (==0.13.13)", "tox-uv>=1.37.7"]
 test = ["psycopg[binary] (>=3.3.8)"]
 
 [tool.hatch.build.targets.wheel]
